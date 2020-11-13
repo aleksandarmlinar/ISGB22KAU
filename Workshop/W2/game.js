@@ -47,17 +47,18 @@ let gameData = {
 				//console.log('interval');
 				
 				
-				let imgRef = $('<img />').prependTo('body main');
-				imgRef.setAttribute('src', 'https://openclipart.org/image/400px/svg_to_png/83359/fantomme.png');
-				imgRef.setAttribute('alt', 'Ghost');
-				imgRef.style.position = 'absolute';
-				imgRef.style.top = topPos + 'px';
-				imgRef.style.left = leftPos + 'px';
-				imgRef.style.width = '15%';
-				imgRef.style.height = '15%';
+                let imgRef = $('<img />').prependTo('body main');
+                //imgRef.setAttribute('src', 'insert link here');
+				imgRef.attr('src', 'https://openclipart.org/image/400px/svg_to_png/83359/fantomme.png');
+				imgRef.attr('alt', 'Ghost');
+				imgRef.css('position', 'absolute');
+				imgRef.css('top' + topPos+ + 'px');
+				imgRef.css('left' + leftPos + 'px');
+				imgRef.css('width', '15%');
+				imgRef.css('height', '15%');
 				
 				
-				document.querySelector('main').appendChild(imgRef);
+				$(imgRef).appendTo('main');
 				gameData.ghostTotal++;
 				//console.log(gameData.ghostTotal);
 			
