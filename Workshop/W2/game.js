@@ -33,32 +33,37 @@ let gameData = {
 		};
 		
 		if (event.key === 'b'){
-			
+			//console.log('b pressed');
 			gameData.ghostTotal = 0;
 			gameData.ghostsKilled = 0;
 			
 			
 			gameData.timerId = setInterval(function(){
 
-				//console.log('timer');
-
-				let topPos = Math.floor(Math.random() * screen.height) + 1;
-				let leftPos = Math.floor(Math.random() * screen.width) + 1;
-				//console.log('interval');
-				
+				//console.log('timer');				
 				
                 let imgRef = $('<img />').prependTo('body main');
                 //imgRef.setAttribute('src', 'insert link here');
 				imgRef.attr('src', 'https://openclipart.org/image/400px/svg_to_png/83359/fantomme.png');
 				imgRef.attr('alt', 'Ghost');
-				imgRef.css('position', 'absolute');
-				imgRef.css('top' + topPos+ + 'px');
-				imgRef.css('left' + leftPos + 'px');
-				imgRef.css('width', '15%');
-				imgRef.css('height', '15%');
+
+                //randomize position
+                let topPos = Math.round( Math.random() * ($(document).height() - imgRef.height() ) ) + 1;
+				let leftPos = Math.round( Math.random() * ($(document).width() - imgRef.width() ) ) + 1;
+				console.log(topPos + '  ' + leftPos);
+
+
+                // css egenskaper
+                imgRef.css({
+                    
+                    'position' : 'absolute',
+                    'left' : leftPos,
+                    'top' : topPos                    
+                
+                });
 				
-				
-				$(imgRef).appendTo('main');
+                //document.querySelector('main').appendChild(imgRef);
+                $(imgRef).appendTo('main');
 				gameData.ghostTotal++;
 				//console.log(gameData.ghostTotal);
 			
